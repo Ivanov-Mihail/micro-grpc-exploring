@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package driver;
+
+service TrackingService{
+    rpc FindOne (DriverId) returns (Driver);
+}
+
+message DriverDTO{
+    int32 id =1;
+}
+
+message Driver {
+    int32 id = 1;
+    int32 followersCount = 2;
+}
