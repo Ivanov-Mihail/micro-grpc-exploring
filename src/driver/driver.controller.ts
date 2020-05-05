@@ -1,11 +1,11 @@
 import { Controller, OnModuleInit, Inject } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { DriverId } from './interface/driver-by-id.interface';
+import { DriverDTO } from './interface/driver.dto';
 import { Driver } from './interface/driver.interface';
 import { ClientGrpc, GrpcMethod } from '@nestjs/microservices';
 
 interface TrackingService{
-    findOne(data:DriverId):Observable<Driver>;
+    findOne(data:DriverDTO):Observable<Driver>;
 }
 
 @Controller('driver')
@@ -25,7 +25,7 @@ export class DriverController implements OnModuleInit {
     }
 
     @GrpcMethod('TrackingService')
-    findOne(data: DriverId):Driver{
+    findOne(data: DriverDTO):Driver{
         return this.items.find(({id})=> id===data.id);
     }
 }

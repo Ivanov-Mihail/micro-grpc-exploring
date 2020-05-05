@@ -4,9 +4,10 @@ package driver;
 
 service TrackingService{
     rpc FindOne (DriverId) returns (Driver);
+    rpc Follow (DriverId, FollowerId) returns (Response);
 }
 
-message DriverId{
+message DriverDTO {
     int32 id =1;
 }
 
